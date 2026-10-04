@@ -1,0 +1,28 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(uid) {
+      return isAuthenticated() && request.auth.uid == uid;
+    }
+
+    // User Audio Media Storage
+    match /audio/{uid}/{sessionId}/{allPaths=**} {
+      allow read, write: if isOwner(uid);
+    }
+
+    // User Video Media Storage
+    match /video/{uid}/{sessionId}/{allPaths=**} {
+      allow read, write: if isOwner(uid);
+    }
+
+    // User Profile Pictures
+    match /profile/{uid}/{allPaths=**} {
+      allow read, write: if isOwner(uid);
+    }
+  }
+}

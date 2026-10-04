@@ -1,0 +1,129 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isResourceOwner() {
+      return isAuthenticated() && resource.data.userId == request.auth.uid;
+    }
+
+    function isCreatingOwner() {
+      return isAuthenticated() && request.resource.data.userId == request.auth.uid;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && request.auth.token.role == 'ADMIN';
+    }
+
+    // 1. Users Collection
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      
+      // User creation: role MUST default to USER
+      allow create: if isOwner(userId) 
+        && request.resource.data.role == 'USER'
+        && request.resource.data.isActive == true;
+      
+      // User update: role, isActive, createdAt, and uid CANNOT be modified by normal users
+      allow update: if (
+        isOwner(userId) 
+        && request.resource.data.role == resource.data.role
+        && request.resource.data.isActive == resource.data.isActive
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.uid == resource.data.uid
+      ) || isAdmin();
+      
+      allow delete: if isAdmin();
+    }
+
+    // 2. Speaking Sessions
+    match /speakingSessions/{sessionId} {
+      allow read, update, delete: if isResourceOwner() || isAdmin();
+      allow create: if isCreatingOwner();
+    }
+
+    // 3. Speech Analyses
+    match /speechAnalyses/{analysisId} {
+      allow read, update, delete: if isResourceOwner() || isAdmin();
+      allow create: if isCreatingOwner();
+    }
+
+    // 4. Interview Sessions & Questions
+    match /interviewSessions/{sessionId} {
+      allow read, update, delete: if isResourceOwner() || isAdmin();
+      allow create: if isCreatingOwner();
+    }
+
+    match /interviewQuestions/{questionId} {
+      allow read, update, delete: if isResourceOwner() || isAdmin();
+      allow create: if isCreatingOwner();
+    }
+
+    // 5. Conversation Sessions
+    match /conversationSessions/{sessionId} {
+      allow read, update, delete: if isResourceOwner() || isAdmin();
+      allow create: if isCreatingOwner();
+    }
+
+    // 6. Practice Sessions
+    match /practiceSessions/{sessionId} {
+      allow read, update, delete: if isResourceOwner() || isAdmin();
+      allow create: if isCreatingOwner();
+    }
+
+    // 7. Learning Plans
+    match /learningPlans/{planId} {
+      allow read, update, delete: if isResourceOwner() || isAdmin();
+      allow create: if isCreatingOwner();
+    }
+
+    // 8. Progress Records
+    match /progress/{progressId} {
+      allow read, update, delete: if isResourceOwner() || isAdmin();
+      allow create: if isCreatingOwner();
+    }
+
+    // 9. Achievements
+    match /achievements/{achievementId} {
+      allow read: if isResourceOwner() || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    // 10. Notifications
+    match /notifications/{notificationId} {
+      allow read, update: if isResourceOwner() || isAdmin();
+      allow create, delete: if isAdmin();
+    }
+
+    // 11. Appointments
+    match /appointments/{appointmentId} {
+      allow read, update, delete: if isResourceOwner() || isAdmin();
+      allow create: if isCreatingOwner();
+    }
+
+    // 12. Subscription Plans (Public Read, Admin Write Only)
+    match /subscriptionPlans/{planId} {
+      allow read: if true;
+      allow write, create, update, delete: if isAdmin();
+    }
+
+    // 13. Audit Logs (Admin Read Only, Trusted Backend Write Only)
+    match /auditLogs/{logId} {
+      allow read: if isAdmin();
+      allow write, create, update, delete: if false;
+    }
+
+    // Default deny all other documents
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
