@@ -22,13 +22,13 @@ export const Badge: React.FC<BadgeProps> = ({
   };
 
   const variantStyles = {
-    sky: 'bg-sky-50 text-sky-800 border border-sky-200/80',
-    teal: 'bg-teal-50 text-teal-800 border border-teal-200/80',
-    amber: 'bg-amber-50 text-amber-800 border border-amber-200/80',
-    emerald: 'bg-emerald-50 text-emerald-800 border border-emerald-200/80',
-    indigo: 'bg-slate-100 text-slate-800 border border-slate-200',
-    rose: 'bg-rose-50 text-rose-800 border border-rose-200/80',
-    slate: 'bg-slate-100 text-slate-700 border border-slate-200',
+    sky: 'bg-[#EAF3F9] text-[#1769AA] border border-[#1769AA]/30',
+    teal: 'bg-[#E7F5F2] text-[#0F766E] border border-[#0F766E]/30',
+    amber: 'bg-[#FFF7E6] text-[#A66A16] border border-[#A66A16]/30',
+    emerald: 'bg-[#EAF6F1] text-[#167A5B] border border-[#167A5B]/30',
+    indigo: 'bg-[#EAF3F9] text-[#123B5D] border border-[#123B5D]/30',
+    rose: 'bg-[#FDEEEE] text-[#C24141] border border-[#C24141]/30',
+    slate: 'bg-[#F8FAFC] text-[#52687A] border border-[#DCE4EA]',
   };
 
   return (
@@ -40,4 +40,5 @@ export const Badge: React.FC<BadgeProps> = ({
     </span>
   );
 };
+
 

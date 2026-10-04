@@ -2,31 +2,31 @@
 
 @layer base {
   :root {
-    /* Color Palette - Healthcare / Medical Digital Health System */
-    --bg-app: #F5F8FA;
-    --bg-surface: #FFFFFF;
-    --bg-surface-hover: #F8FAFC;
-    --bg-card: #FFFFFF;
-    --border-subtle: #E2E8F0;
-    --border-medium: #CBD5E1;
-
-    /* Brand & Clinical Accents */
-    --primary: #0284C7;         /* Medical Blue */
-    --primary-dark: #0369A1;    /* Deep Medical Blue */
-    --secondary: #0D9488;       /* Clinical Teal */
-    --accent-amber: #D97706;    /* Muted Amber */
-    --accent-emerald: #059669;  /* Calm Emerald */
-    --accent-rose: #DC2626;     /* Clinical Red */
-
-    /* Typography Text Colors */
-    --text-primary: #0F172A;
-    --text-secondary: #475569;
-    --text-muted: #64748B;
+    /* Precise Clinical Healthcare Color Palette */
+    --color-primary-navy: #123B5D;
+    --color-primary-blue: #1769AA;
+    --color-deep-blue: #0E4F7A;
+    --color-teal: #0F766E;
+    --color-page-bg: #F5F7F9;
+    --color-surface: #FFFFFF;
+    --color-secondary-surface: #F8FAFC;
+    --color-text-primary: #172B3A;
+    --color-text-secondary: #52687A;
+    --color-text-muted: #718496;
+    --color-border: #DCE4EA;
+    --color-light-blue: #EAF3F9;
+    --color-light-teal: #E7F5F2;
+    --color-success: #167A5B;
+    --color-success-bg: #EAF6F1;
+    --color-warning: #A66A16;
+    --color-warning-bg: #FFF7E6;
+    --color-error: #C24141;
+    --color-error-bg: #FDEEEE;
   }
 
   body {
-    background-color: var(--bg-app);
-    color: var(--text-primary);
+    background-color: var(--color-page-bg);
+    color: var(--color-text-primary);
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
@@ -37,39 +37,42 @@
 .glass-panel,
 .clinical-card {
   background-color: #FFFFFF;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #DCE4EA;
   border-radius: 0.75rem; /* 12px */
-  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03), 0 1px 2px -1px rgba(15, 23, 42, 0.03);
+  box-shadow: 0 1px 3px 0 rgba(23, 43, 58, 0.04), 0 1px 2px -1px rgba(23, 43, 58, 0.03);
 }
 
 .glass-panel-interactive,
 .clinical-card-interactive {
   background-color: #FFFFFF;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #DCE4EA;
   border-radius: 0.75rem;
-  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03);
+  box-shadow: 0 1px 3px 0 rgba(23, 43, 58, 0.04);
   transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-panel-interactive:hover,
 .clinical-card-interactive:hover {
-  border-color: #CBD5E1;
-  box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  border-color: #1769AA;
+  box-shadow: 0 4px 12px -2px rgba(23, 43, 58, 0.08), 0 2px 4px -2px rgba(23, 43, 58, 0.04);
   transform: translateY(-1px);
 }
 
-/* Subtle non-neon accents */
-.glow-blue {
-  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03);
-}
+/* Utility Color Helpers */
+.bg-clinical-page { background-color: #F5F7F9; }
+.bg-clinical-surface { background-color: #FFFFFF; }
+.bg-clinical-secondary { background-color: #F8FAFC; }
+.bg-clinical-light-blue { background-color: #EAF3F9; }
+.bg-clinical-light-teal { background-color: #E7F5F2; }
 
-.glow-gold {
-  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03);
-}
+.text-clinical-navy { color: #123B5D; }
+.text-clinical-blue { color: #1769AA; }
+.text-clinical-teal { color: #0F766E; }
+.text-clinical-primary { color: #172B3A; }
+.text-clinical-secondary { color: #52687A; }
+.text-clinical-muted { color: #718496; }
 
-.glow-indigo {
-  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03);
-}
+.border-clinical { border-color: #DCE4EA; }
 
 /* Custom Minimalist Clean Scrollbar */
 ::-webkit-scrollbar {
@@ -77,14 +80,15 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  background: #F5F7F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #DCE4EA;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #718496;
 }
+
 
 

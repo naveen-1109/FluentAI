@@ -59,11 +59,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentRoute, onNavigate, curr
   ];
 
   return (
-    <aside className="w-64 bg-white border-r border-slate-200 min-h-[calc(100vh-65px)] p-4 flex flex-col justify-between shrink-0 shadow-xs">
+    <aside className="w-64 bg-white border-r border-[#DCE4EA] min-h-[calc(100vh-65px)] p-4 flex flex-col justify-between shrink-0 shadow-xs">
       <div className="space-y-6">
         {navSections.map((section) => (
           <div key={section.title} className="space-y-1">
-            <div className="px-3 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+            <div className="px-3 py-1 text-[10px] font-bold text-[#718496] uppercase tracking-widest">
               {section.title}
             </div>
 
@@ -77,11 +77,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentRoute, onNavigate, curr
                   onClick={() => onNavigate(item.route)}
                   className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg font-medium text-xs sm:text-sm transition-all ${
                     isActive
-                      ? 'bg-sky-50 text-sky-800 font-semibold border-l-3 border-sky-700 shadow-2xs'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                      ? 'bg-[#EAF3F9] text-[#1769AA] font-semibold border-l-3 border-[#1769AA] shadow-2xs'
+                      : 'text-[#52687A] hover:text-[#172B3A] hover:bg-[#F8FAFC]'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-sky-700' : 'text-slate-400'}`} />
+                  <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-[#1769AA]' : 'text-[#718496]'}`} />
                   <span className="truncate">{item.label}</span>
                 </button>
               );
@@ -92,17 +92,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentRoute, onNavigate, curr
 
       {/* Subscription Card Widget */}
       {!isAdmin && (
-        <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200 space-y-2">
+        <div className="p-3.5 rounded-lg bg-[#F8FAFC] border border-[#DCE4EA] space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-800">Professional Plan</span>
+            <span className="text-xs font-semibold text-[#172B3A]">Professional Plan</span>
             <Badge variant="teal" size="sm">Active</Badge>
           </div>
-          <p className="text-[11px] text-slate-500 leading-normal">
+          <p className="text-[11px] text-[#52687A] leading-normal">
             Clinical AI Speech Analysis, Whisper STT & Disfluency Profiling.
           </p>
           <button 
             onClick={() => onNavigate('profile')}
-            className="w-full py-1.5 text-xs font-medium bg-white hover:bg-slate-100 text-slate-700 rounded-md transition-colors border border-slate-200 shadow-2xs"
+            className="w-full py-1.5 text-xs font-medium bg-white hover:bg-[#F8FAFC] text-[#172B3A] rounded-md transition-colors border border-[#DCE4EA] shadow-2xs"
           >
             Manage Plan
           </button>
@@ -111,4 +111,5 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentRoute, onNavigate, curr
     </aside>
   );
 };
+
 

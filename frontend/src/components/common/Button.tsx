@@ -21,7 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-semibold transition-all duration-150 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-sky-500/30';
+  const baseStyles = 'inline-flex items-center justify-center font-semibold transition-all duration-150 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-[#1769AA]/30';
 
   const sizeStyles = {
     sm: 'px-3 py-1.5 text-xs gap-1.5',
@@ -30,12 +30,12 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const variantStyles = {
-    primary: 'bg-sky-700 hover:bg-sky-800 text-white shadow-xs active:bg-sky-900',
-    secondary: 'bg-teal-700 hover:bg-teal-800 text-white shadow-xs active:bg-teal-900',
-    outline: 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 shadow-xs active:bg-slate-100',
-    ghost: 'bg-transparent hover:bg-slate-100 text-slate-600 hover:text-slate-900',
-    danger: 'bg-rose-700 hover:bg-rose-800 text-white shadow-xs active:bg-rose-900',
-    amber: 'bg-amber-600 hover:bg-amber-700 text-white shadow-xs active:bg-amber-800',
+    primary: 'bg-[#1769AA] hover:bg-[#0E4F7A] text-white shadow-xs active:bg-[#0A3D60]',
+    secondary: 'bg-[#0F766E] hover:bg-[#0D635D] text-white shadow-xs active:bg-[#094A46]',
+    outline: 'bg-white hover:bg-[#F8FAFC] text-[#172B3A] border border-[#DCE4EA] shadow-xs active:bg-[#EAF3F9]',
+    ghost: 'bg-transparent hover:bg-[#EAF3F9] text-[#52687A] hover:text-[#172B3A]',
+    danger: 'bg-[#C24141] hover:bg-[#A83434] text-white shadow-xs active:bg-[#8E2828]',
+    amber: 'bg-[#A66A16] hover:bg-[#8D5810] text-white shadow-xs active:bg-[#74470A]',
   };
 
   return (
@@ -59,4 +59,5 @@ export const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
+
 
