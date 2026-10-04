@@ -38,19 +38,19 @@ export const ConversationModePage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-7xl mx-auto">
       
       {/* Header */}
-      <div className="glass-panel p-6 border-sky-500/20 space-y-1">
-        <Badge variant="sky" icon={<MessageSquare className="w-3.5 h-3.5" />}>
+      <div className="clinical-card p-6 space-y-1">
+        <Badge variant="teal" icon={<MessageSquare className="w-3.5 h-3.5" />}>
           AI DIALOGUE PARTNER
         </Badge>
-        <h1 className="text-2xl font-bold text-white">Interactive Speech & Dialogue Practice</h1>
-        <p className="text-xs text-slate-400">Engage in fluid conversational dialogue with real-time feedback</p>
+        <h1 className="text-2xl font-bold text-slate-900">Interactive Speech & Dialogue Practice</h1>
+        <p className="text-xs text-slate-500">Engage in fluid conversational dialogue with real-time feedback</p>
       </div>
 
       {/* Chat Workspace */}
-      <div className="glass-panel p-6 flex flex-col h-[520px] border-slate-800">
+      <div className="clinical-card p-6 flex flex-col h-[520px]">
         
         {/* Messages list */}
         <div className="flex-1 overflow-y-auto space-y-4 pr-2">
@@ -59,17 +59,17 @@ export const ConversationModePage: React.FC = () => {
               key={idx}
               className={`flex items-start gap-3 ${m.sender === 'user' ? 'flex-row-reverse' : ''}`}
             >
-              <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
                 m.sender === 'ai' 
-                  ? 'bg-sky-500/15 text-sky-400 border border-sky-500/30' 
-                  : 'bg-amber-500/15 text-amber-400 border border-amber-500/30'
+                  ? 'bg-sky-50 text-sky-800 border border-sky-100' 
+                  : 'bg-slate-100 text-slate-700 border border-slate-200'
               }`}>
                 {m.sender === 'ai' ? <Bot className="w-4 h-4" /> : <UserIcon className="w-4 h-4" />}
               </div>
-              <div className={`p-4 rounded-2xl max-w-lg text-xs leading-relaxed ${
+              <div className={`p-3.5 rounded-xl max-w-lg text-xs leading-relaxed ${
                 m.sender === 'user' 
-                  ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white rounded-tr-none shadow-md shadow-sky-500/10' 
-                  : 'bg-slate-900/90 border border-slate-800 text-slate-200 rounded-tl-none'
+                  ? 'bg-sky-700 text-white rounded-tr-none shadow-2xs' 
+                  : 'bg-slate-50 border border-slate-200 text-slate-800 rounded-tl-none'
               }`}>
                 {m.text}
               </div>
@@ -78,13 +78,13 @@ export const ConversationModePage: React.FC = () => {
         </div>
 
         {/* Form input */}
-        <form onSubmit={handleSend} className="mt-4 flex gap-2 pt-4 border-t border-slate-800">
+        <form onSubmit={handleSend} className="mt-4 flex gap-2 pt-4 border-t border-slate-200">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type or speak your conversational response..."
-            className="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-sky-500 placeholder-slate-500"
+            className="flex-1 bg-white border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-600 placeholder-slate-400"
           />
           <Button
             type="submit"
@@ -100,3 +100,4 @@ export const ConversationModePage: React.FC = () => {
     </div>
   );
 };
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mic, User as UserIcon, LogOut, Shield, Flame, Sparkles } from 'lucide-react';
+import { Mic, User as UserIcon, LogOut, Shield, Calendar, Sparkles } from 'lucide-react';
 import type { User } from '../../types';
 import { Badge } from '../common/Badge';
 import { Button } from '../common/Button';
@@ -12,7 +12,7 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ currentUser, onNavigate, onLogout }) => {
   return (
-    <header className="sticky top-0 z-50 bg-[#070B14]/85 backdrop-blur-xl border-b border-slate-800/80 px-4 sm:px-8 py-3">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 px-4 sm:px-8 py-3 shadow-xs">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         
         {/* Brand Logo */}
@@ -20,15 +20,15 @@ export const Navbar: React.FC<NavbarProps> = ({ currentUser, onNavigate, onLogou
           onClick={() => onNavigate(currentUser ? (currentUser.role === 'admin' ? 'admin' : 'dashboard') : 'landing')}
           className="flex items-center gap-3 cursor-pointer group"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
+          <div className="w-9 h-9 rounded-lg bg-sky-800 flex items-center justify-center text-white shadow-xs group-hover:bg-sky-900 transition-colors">
             <Mic className="w-5 h-5 text-white" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xl font-black text-white tracking-tight">FluentAI</span>
-              <Badge variant="amber" size="sm">PRO ENGINE</Badge>
+              <span className="text-xl font-bold text-slate-900 tracking-tight">FluentAI</span>
+              <Badge variant="sky" size="sm">Professional Plan</Badge>
             </div>
-            <p className="text-[11px] text-slate-400 font-medium hidden sm:block">AI Speech Fluency & Communication Platform</p>
+            <p className="text-[11px] text-slate-500 font-medium hidden sm:block">Clinical Speech Analysis & Communication Platform</p>
           </div>
         </div>
 
@@ -36,27 +36,27 @@ export const Navbar: React.FC<NavbarProps> = ({ currentUser, onNavigate, onLogou
         {currentUser ? (
           <div className="flex items-center gap-3 sm:gap-4">
             
-            {/* Streak Counter */}
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-amber-500/30 text-amber-400 font-bold text-xs shadow-sm">
-              <Flame className="w-4 h-4 fill-amber-400 text-amber-400 animate-pulse" />
-              <span>{currentUser.streakCount} Day Streak</span>
+            {/* Practice Consistency */}
+            <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 font-medium text-xs">
+              <Calendar className="w-4 h-4 text-sky-700 shrink-0" />
+              <span>{currentUser.streakCount} Days Active</span>
             </div>
 
             {/* User Profile Tag */}
             <div 
               onClick={() => onNavigate('profile')}
-              className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 cursor-pointer transition-all hover:border-sky-500/30"
+              className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 cursor-pointer transition-all"
             >
-              <div className="w-7 h-7 rounded-lg bg-sky-500/15 border border-sky-400/30 flex items-center justify-center shrink-0">
+              <div className="w-7 h-7 rounded-md bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0">
                 {currentUser.role === 'admin' ? (
-                  <Shield className="w-4 h-4 text-amber-400" />
+                  <Shield className="w-4 h-4 text-sky-800" />
                 ) : (
-                  <UserIcon className="w-4 h-4 text-sky-400" />
+                  <UserIcon className="w-4 h-4 text-slate-700" />
                 )}
               </div>
               <div className="text-left hidden md:block">
-                <div className="text-xs font-bold text-white">{currentUser.name}</div>
-                <div className="text-[10px] font-bold text-sky-400 uppercase tracking-wider">
+                <div className="text-xs font-semibold text-slate-900">{currentUser.name}</div>
+                <div className="text-[10px] font-medium text-slate-500 uppercase tracking-wider">
                   {currentUser.role} • {currentUser.subscriptionTier}
                 </div>
               </div>
@@ -66,7 +66,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentUser, onNavigate, onLogou
             <button
               onClick={onLogout}
               title="Sign Out"
-              className="p-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 text-rose-400 transition-colors"
+              className="p-2 rounded-lg bg-slate-100 hover:bg-rose-50 border border-slate-200 text-slate-600 hover:text-rose-700 transition-colors"
             >
               <LogOut className="w-4 h-4" />
             </button>
@@ -76,7 +76,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentUser, onNavigate, onLogou
           <div className="flex items-center gap-3">
             <button
               onClick={() => onNavigate('login')}
-              className="px-4 py-2 text-xs sm:text-sm font-semibold text-slate-300 hover:text-white transition-colors"
+              className="px-4 py-2 text-xs sm:text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors"
             >
               Sign In
             </button>
@@ -95,3 +95,4 @@ export const Navbar: React.FC<NavbarProps> = ({ currentUser, onNavigate, onLogou
     </header>
   );
 };
+

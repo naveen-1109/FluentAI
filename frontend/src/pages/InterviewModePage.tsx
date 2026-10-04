@@ -30,22 +30,22 @@ export const InterviewModePage: React.FC<InterviewModePageProps> = () => {
   const currentQ = questions[currentQuestionIndex];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-7xl mx-auto">
       
       {/* Header */}
-      <div className="glass-panel p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-indigo-500/20">
+      <div className="clinical-card p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="space-y-1">
-          <Badge variant="indigo" icon={<Briefcase className="w-3.5 h-3.5" />}>
+          <Badge variant="teal" icon={<Briefcase className="w-3.5 h-3.5" />}>
             AI INTERVIEW SIMULATOR
           </Badge>
-          <h1 className="text-2xl font-bold text-white">Simulated Behavioral & Technical Interview</h1>
-          <p className="text-xs text-slate-400">Practice responding to real interview questions while AI evaluates speech rate & fluency</p>
+          <h1 className="text-2xl font-bold text-slate-900">Simulated Behavioral & Technical Interview</h1>
+          <p className="text-xs text-slate-500">Practice responding to real interview questions while AI evaluates speech rate & fluency</p>
         </div>
 
         <select
           value={selectedDomain}
           onChange={(e) => setSelectedDomain(e.target.value)}
-          className="bg-slate-900 border border-slate-800 text-slate-200 rounded-xl px-4 py-2.5 text-xs font-bold focus:outline-none focus:border-indigo-500 cursor-pointer"
+          className="bg-white border border-slate-300 text-slate-800 rounded-lg px-3.5 py-2 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-600 cursor-pointer shadow-xs"
         >
           <option value="Software Engineering">Domain: Software Engineering</option>
           <option value="Product Management">Domain: Product Management</option>
@@ -54,14 +54,14 @@ export const InterviewModePage: React.FC<InterviewModePageProps> = () => {
       </div>
 
       {/* Question Card */}
-      <div className="glass-panel p-8 sm:p-10 space-y-8 text-center border-indigo-500/30 glow-indigo">
+      <div className="clinical-card p-8 sm:p-10 space-y-8 text-center">
         <div className="flex justify-center">
-          <Badge variant="indigo" size="md">
+          <Badge variant="slate" size="md">
             Question {currentQuestionIndex + 1} of {questions.length} • {currentQ.category}
           </Badge>
         </div>
 
-        <h2 className="text-xl sm:text-2xl font-bold text-white max-w-3xl mx-auto leading-relaxed">
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 max-w-3xl mx-auto leading-relaxed">
           "{currentQ.text}"
         </h2>
 
@@ -73,16 +73,16 @@ export const InterviewModePage: React.FC<InterviewModePageProps> = () => {
                 window.speechSynthesis.speak(utterance);
               }
             }}
-            variant="secondary"
+            variant="outline"
             size="md"
-            icon={<Volume2 className="w-4 h-4 text-indigo-400" />}
+            icon={<Volume2 className="w-4 h-4 text-sky-800" />}
           >
             Read Question Aloud
           </Button>
         </div>
 
         {/* Navigation Controls */}
-        <div className="flex justify-between items-center pt-6 border-t border-slate-800/80">
+        <div className="flex justify-between items-center pt-6 border-t border-slate-200">
           <Button
             onClick={() => setCurrentQuestionIndex((prev) => Math.max(0, prev - 1))}
             disabled={currentQuestionIndex === 0}
@@ -108,3 +108,4 @@ export const InterviewModePage: React.FC<InterviewModePageProps> = () => {
     </div>
   );
 };
+

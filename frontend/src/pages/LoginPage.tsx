@@ -54,32 +54,32 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onNavigate
 
   return (
     <div className="max-w-md mx-auto py-8 sm:py-12">
-      <div className="glass-panel p-8 space-y-6 border-sky-500/20 glow-blue">
+      <div className="clinical-card p-8 space-y-6">
         
         {/* Header */}
         <div className="text-center space-y-3">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center mx-auto shadow-lg shadow-sky-500/25">
+          <div className="w-12 h-12 rounded-xl bg-sky-800 flex items-center justify-center mx-auto text-white shadow-xs">
             <Mic className="w-6 h-6 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-white">Sign In to FluentAI</h1>
-          <p className="text-xs text-slate-400">Access your AI speech recording portal & clinical analytics</p>
+          <h1 className="text-2xl font-bold text-slate-900">Sign In to FluentAI</h1>
+          <p className="text-xs text-slate-500">Access your clinical speech analysis portal & assessments</p>
         </div>
 
         {errorMessage && (
-          <div className="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-semibold">
+          <div className="p-3.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 text-xs font-medium">
             {errorMessage}
           </div>
         )}
 
         {/* Role Toggle */}
-        <div className="grid grid-cols-2 gap-2 p-1 rounded-xl bg-slate-900 border border-slate-800">
+        <div className="grid grid-cols-2 gap-2 p-1 rounded-lg bg-slate-100 border border-slate-200">
           <button
             type="button"
             onClick={() => handleAutofill('user')}
-            className={`py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+            className={`py-2 rounded-md text-xs font-semibold transition-all flex items-center justify-center gap-1.5 ${
               role === 'user'
-                ? 'bg-sky-500/20 text-sky-400 border border-sky-500/40 shadow-sm'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-white text-sky-800 border border-slate-200 shadow-xs'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <UserIcon className="w-4 h-4" /> User Portal
@@ -88,10 +88,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onNavigate
           <button
             type="button"
             onClick={() => handleAutofill('admin')}
-            className={`py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+            className={`py-2 rounded-md text-xs font-semibold transition-all flex items-center justify-center gap-1.5 ${
               role === 'admin'
-                ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40 shadow-sm'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-white text-amber-800 border border-slate-200 shadow-xs'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <Shield className="w-4 h-4" /> Admin Portal
@@ -132,23 +132,23 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onNavigate
         </form>
 
         {/* Demo Autofill Notice & Register Navigation */}
-        <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-center space-y-2">
-          <div className="text-xs text-slate-400">
+        <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200 text-center space-y-2">
+          <div className="text-xs text-slate-600">
             Need an account?{' '}
             <button
               type="button"
               onClick={onNavigateToRegister}
-              className="font-bold text-sky-400 hover:underline"
+              className="font-semibold text-sky-800 hover:underline"
             >
               Register here
             </button>
           </div>
-          <div className="text-[11px] text-slate-500 border-t border-slate-800 pt-2">
+          <div className="text-[11px] text-slate-500 border-t border-slate-200 pt-2">
             Demo Credentials Pre-filled.{' '}
             <button
               type="button"
               onClick={() => handleAutofill(role)}
-              className="font-bold text-sky-400 hover:underline"
+              className="font-semibold text-sky-800 hover:underline"
             >
               Autofill
             </button>
@@ -159,3 +159,4 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onNavigate
     </div>
   );
 };
+

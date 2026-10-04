@@ -71,7 +71,7 @@ export function AppContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070B14] text-slate-100 font-sans selection:bg-sky-500/30 selection:text-sky-200">
+    <div className="min-h-screen flex flex-col bg-[#F5F8FA] text-slate-900 font-sans selection:bg-sky-100 selection:text-sky-900">
       
       {/* Top Navbar */}
       <Navbar
@@ -132,10 +132,10 @@ export function AppContent() {
           {/* Speech Studio (Protected) */}
           {currentRoute === 'studio' && (
             <ProtectedRoute currentUser={currentUser} onUnauthorized={() => setCurrentRoute('login')}>
-              <div className="space-y-6">
-                <div className="glass-panel p-6 border-sky-500/20">
-                  <h1 className="text-2xl font-bold text-white">Speech Recording & FFT Studio</h1>
-                  <p className="text-xs text-slate-400">Record reading passages or freestyle speech for live disfluency analysis</p>
+              <div className="space-y-6 max-w-7xl mx-auto">
+                <div className="clinical-card p-6">
+                  <h1 className="text-2xl font-bold text-slate-900">Speech Recording & FFT Studio</h1>
+                  <p className="text-xs text-slate-500">Record reading passages or freestyle speech for live disfluency analysis</p>
                 </div>
                 <AudioStudio onSessionAnalyzed={handleSessionAnalyzed} />
               </div>

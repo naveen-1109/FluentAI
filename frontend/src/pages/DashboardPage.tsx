@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mic, Sparkles, ChevronRight, CheckCircle2, MessageSquare, Briefcase, Target } from 'lucide-react';
+import { Mic, ChevronRight, CheckCircle2, MessageSquare, Briefcase, Target, Activity } from 'lucide-react';
 import type { User, SessionAnalysis, LearningTask } from '../types';
 import { MetricsOverview } from '../components/dashboard/MetricsOverview';
 import { Button } from '../components/common/Button';
@@ -24,19 +24,22 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
   const completedTasksCount = tasks.filter((t) => t.completed).length;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 max-w-7xl mx-auto">
       
-      {/* 1. Welcome & Primary Quick Action Header */}
-      <div className="glass-panel p-6 sm:p-8 relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-sky-500/20 glow-blue">
+      {/* 1. Clinical Dashboard Hero Introduction */}
+      <div className="clinical-card p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-2 max-w-2xl">
-          <Badge variant="sky" icon={<Sparkles className="w-3.5 h-3.5" />}>
-            FluentAI Speech Fluency Assistant
+          <Badge variant="teal" icon={<Activity className="w-3.5 h-3.5" />}>
+            Clinical Speech & Communication Assessment
           </Badge>
-          <h1 className="text-2xl sm:text-3xl font-black text-white">
-            Welcome back, {user.name}
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+            Good morning, {user.name}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-300">
-            Target Goal: <span className="text-white font-semibold">{user.targetGoal || 'Improve speech fluency & reduce block frequency'}</span>
+          <p className="text-sm text-slate-600 leading-relaxed">
+            Continue improving your communication skills. Your latest assessment shows steady progress in speech fluency.
+          </p>
+          <p className="text-xs text-slate-500 font-medium">
+            Primary Goal: <span className="text-slate-800 font-semibold">{user.targetGoal || 'Improve speech fluency & reduce block frequency'}</span>
           </p>
         </div>
 
@@ -46,7 +49,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
           size="lg"
           icon={<Mic className="w-5 h-5" />}
         >
-          Start Speech Recording
+          Start Speech Session
         </Button>
       </div>
 
@@ -55,62 +58,62 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
 
       {/* 3. Quick Action Cards */}
       <div className="space-y-3">
-        <h2 className="text-xs font-extrabold text-slate-400 uppercase tracking-widest px-1">Quick Actions</h2>
+        <h2 className="text-xs font-bold text-slate-500 uppercase tracking-wider px-1">Assessment Workspaces</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <button
             onClick={() => onNavigate('studio')}
-            className="glass-panel-interactive p-4 text-left space-y-2 flex items-start gap-3 border-sky-500/20"
+            className="clinical-card-interactive p-4 text-left space-y-2 flex items-start gap-3"
           >
-            <div className="p-2.5 rounded-xl bg-sky-500/15 text-sky-400 border border-sky-500/30 shrink-0">
+            <div className="p-2.5 rounded-lg bg-sky-50 text-sky-800 border border-sky-100 shrink-0">
               <Mic className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-sm font-bold text-white">Speech Studio</div>
-              <div className="text-xs text-slate-400">Record text passages with live FFT visualizer</div>
+              <div className="text-sm font-bold text-slate-900">Speech Studio</div>
+              <div className="text-xs text-slate-500">Record reading passages for FFT disfluency analysis</div>
             </div>
           </button>
 
           <button
             onClick={() => onNavigate('interview')}
-            className="glass-panel-interactive p-4 text-left space-y-2 flex items-start gap-3 border-indigo-500/20"
+            className="clinical-card-interactive p-4 text-left space-y-2 flex items-start gap-3"
           >
-            <div className="p-2.5 rounded-xl bg-indigo-500/15 text-indigo-400 border border-indigo-500/30 shrink-0">
+            <div className="p-2.5 rounded-lg bg-teal-50 text-teal-800 border border-teal-100 shrink-0">
               <Briefcase className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-sm font-bold text-white">AI Interview</div>
-              <div className="text-xs text-slate-400">Practice technical & behavioral questions</div>
+              <div className="text-sm font-bold text-slate-900">AI Interview</div>
+              <div className="text-xs text-slate-500">Practice behavioral and clinical Q&A scenarios</div>
             </div>
           </button>
 
           <button
             onClick={() => onNavigate('conversation')}
-            className="glass-panel-interactive p-4 text-left space-y-2 flex items-start gap-3 border-amber-500/20"
+            className="clinical-card-interactive p-4 text-left space-y-2 flex items-start gap-3"
           >
-            <div className="p-2.5 rounded-xl bg-amber-500/15 text-amber-400 border border-amber-500/30 shrink-0">
+            <div className="p-2.5 rounded-lg bg-slate-100 text-slate-700 border border-slate-200 shrink-0">
               <MessageSquare className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-sm font-bold text-white">AI Dialogue</div>
-              <div className="text-xs text-slate-400">Natural conversation practice with real-time feedback</div>
+              <div className="text-sm font-bold text-slate-900">AI Dialogue</div>
+              <div className="text-xs text-slate-500">Natural conversation practice with real-time feedback</div>
             </div>
           </button>
         </div>
       </div>
 
-      {/* 4. Two Column Layout: Recent Session Breakdown & Daily Tasks */}
+      {/* 4. Two Column Layout: Latest Speech Assessment & Today's Practice */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
-        {/* Left Column: Recent Speech Session Report */}
-        <div className="lg:col-span-2 glass-panel p-6 space-y-5 border-slate-800">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+        {/* Left Column: Latest Speech Assessment Summary */}
+        <div className="lg:col-span-2 clinical-card p-6 space-y-5">
+          <div className="flex items-center justify-between border-b border-slate-200 pb-4">
             <div>
-              <h3 className="text-base font-bold text-white">Latest Analyzed Speech Session</h3>
-              <p className="text-xs text-slate-400">Detailed breakdown of disfluencies and speech rate</p>
+              <h3 className="text-base font-bold text-slate-900">Latest Speech Assessment</h3>
+              <p className="text-xs text-slate-500">Detailed breakdown of speech fluency and pace</p>
             </div>
             <button
               onClick={() => onNavigate('history')}
-              className="text-xs font-bold text-sky-400 hover:text-sky-300 flex items-center gap-1 transition-colors"
+              className="text-xs font-semibold text-sky-800 hover:text-sky-900 flex items-center gap-1 transition-colors"
             >
               View History <ChevronRight className="w-4 h-4" />
             </button>
@@ -118,36 +121,36 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
 
           {latestSession ? (
             <div className="space-y-4">
-              <div className="flex items-center justify-between text-xs text-slate-400">
-                <span className="font-bold text-slate-200">{latestSession.title}</span>
+              <div className="flex items-center justify-between text-xs text-slate-600">
+                <span className="font-semibold text-slate-800">{latestSession.title}</span>
                 <span>{latestSession.date}</span>
               </div>
 
-              {/* Fluency & Pace Progress Summary */}
+              {/* Fluency & Pace Summary Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
-                  <div className="text-xs font-semibold text-slate-400">Fluency Score</div>
-                  <div className="text-2xl font-black text-sky-400">{latestSession.fluencyScore}%</div>
+                <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
+                  <div className="text-xs font-semibold text-slate-500">Fluency Score</div>
+                  <div className="text-2xl font-bold text-sky-800">{latestSession.fluencyScore}%</div>
                 </div>
-                <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
-                  <div className="text-xs font-semibold text-slate-400">Speech Rate</div>
-                  <div className="text-2xl font-black text-amber-400">{latestSession.speechRateWpm} WPM</div>
+                <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
+                  <div className="text-xs font-semibold text-slate-500">Speaking Rate</div>
+                  <div className="text-2xl font-bold text-teal-800">{latestSession.speechRateWpm} WPM</div>
                 </div>
-                <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
-                  <div className="text-xs font-semibold text-slate-400">Disfluencies</div>
-                  <div className="text-2xl font-black text-rose-400">{latestSession.disfluencies.length} Events</div>
+                <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
+                  <div className="text-xs font-semibold text-slate-500">Disfluencies</div>
+                  <div className="text-2xl font-bold text-slate-800">{latestSession.disfluencies.length} Events</div>
                 </div>
               </div>
 
-              {/* AI Transcript */}
-              <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 text-xs text-slate-300 space-y-1">
-                <div className="font-extrabold text-slate-400 uppercase tracking-wider text-[10px]">Verbatim Transcript</div>
+              {/* Verbatim Transcript */}
+              <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-1">
+                <div className="font-bold text-slate-500 uppercase tracking-wider text-[10px]">Verbatim Transcript</div>
                 <p className="italic leading-relaxed">"{latestSession.transcript}"</p>
               </div>
 
-              {/* AI Coach Remark */}
-              <div className="p-4 rounded-xl bg-sky-500/10 border border-sky-500/20 text-xs text-sky-300 space-y-1">
-                <div className="font-extrabold uppercase tracking-wider text-[10px]">AI Speech Coach Remark</div>
+              {/* AI Assessment Remark */}
+              <div className="p-4 rounded-lg bg-sky-50 border border-sky-100 text-xs text-sky-900 space-y-1">
+                <div className="font-bold uppercase tracking-wider text-[10px] text-sky-800">Speech Assessment Observations</div>
                 <p className="leading-relaxed">{latestSession.aiFeedbackSummary}</p>
               </div>
             </div>
@@ -156,14 +159,14 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
           )}
         </div>
 
-        {/* Right Column: Daily Learning Plan Tasks */}
-        <div className="glass-panel p-6 space-y-4 border-slate-800">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+        {/* Right Column: Today's Practice Tasks */}
+        <div className="clinical-card p-6 space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-200 pb-4">
             <div className="flex items-center gap-2">
-              <Target className="w-4 h-4 text-amber-400" />
-              <h3 className="text-base font-bold text-white">Daily Speech Tasks</h3>
+              <Target className="w-4 h-4 text-sky-800" />
+              <h3 className="text-base font-bold text-slate-900">Today's Practice</h3>
             </div>
-            <Badge variant="amber" size="sm">
+            <Badge variant="sky" size="sm">
               {completedTasksCount} / {tasks.length} Done
             </Badge>
           </div>
@@ -173,25 +176,25 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
               <div
                 key={task.id}
                 onClick={() => onToggleTask(task.id)}
-                className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-start gap-3 ${
+                className={`p-3.5 rounded-lg border transition-all cursor-pointer flex items-start gap-3 ${
                   task.completed
-                    ? 'bg-slate-900/40 border-slate-800 opacity-60'
-                    : 'bg-slate-900/90 border-slate-800 hover:border-sky-500/50'
+                    ? 'bg-slate-50 border-slate-200 opacity-70'
+                    : 'bg-white border-slate-200 hover:border-slate-300 shadow-2xs'
                 }`}
               >
-                <div className={`mt-0.5 w-5 h-5 rounded-md flex items-center justify-center border transition-colors shrink-0 ${
+                <div className={`mt-0.5 w-4 h-4 rounded flex items-center justify-center border transition-colors shrink-0 ${
                   task.completed
-                    ? 'bg-emerald-500 border-emerald-500 text-white'
-                    : 'border-slate-700 bg-slate-800'
+                    ? 'bg-emerald-600 border-emerald-600 text-white'
+                    : 'border-slate-300 bg-white'
                 }`}>
-                  {task.completed && <CheckCircle2 className="w-4 h-4" />}
+                  {task.completed && <CheckCircle2 className="w-3.5 h-3.5" />}
                 </div>
-                <div className="space-y-1">
-                  <div className={`text-xs font-bold ${task.completed ? 'line-through text-slate-500' : 'text-slate-200'}`}>
+                <div className="space-y-0.5">
+                  <div className={`text-xs font-semibold ${task.completed ? 'line-through text-slate-500' : 'text-slate-800'}`}>
                     {task.title}
                   </div>
-                  <div className="text-[11px] text-slate-400 leading-relaxed">{task.description}</div>
-                  <div className="text-[10px] text-sky-400 font-semibold">Duration: {task.durationMinutes} mins</div>
+                  <div className="text-[11px] text-slate-500 leading-normal">{task.description}</div>
+                  <div className="text-[10px] text-sky-700 font-medium">Duration: {task.durationMinutes} mins</div>
                 </div>
               </div>
             ))}
@@ -199,9 +202,9 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
 
           <button
             onClick={() => onNavigate('learning')}
-            className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-xs font-bold text-slate-300 transition-colors flex items-center justify-center gap-1.5 border border-slate-800"
+            className="w-full py-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 text-xs font-semibold text-slate-700 transition-colors flex items-center justify-center gap-1.5 border border-slate-200"
           >
-            View Complete Learning Plan <ChevronRight className="w-4 h-4" />
+            View Full Learning Plan <ChevronRight className="w-4 h-4" />
           </button>
         </div>
 
@@ -210,3 +213,4 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
     </div>
   );
 };
+
