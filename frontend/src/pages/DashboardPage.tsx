@@ -32,14 +32,14 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
           <Badge variant="teal" icon={<Activity className="w-3.5 h-3.5" />}>
             Clinical Speech & Communication Assessment
           </Badge>
-          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#172B3A] tracking-tight">
             Good morning, {user.name}
           </h1>
-          <p className="text-sm text-slate-600 leading-relaxed">
+          <p className="text-sm text-[#52687A] leading-relaxed">
             Continue improving your communication skills. Your latest assessment shows steady progress in speech fluency.
           </p>
-          <p className="text-xs text-slate-500 font-medium">
-            Primary Goal: <span className="text-slate-800 font-semibold">{user.targetGoal || 'Improve speech fluency & reduce block frequency'}</span>
+          <p className="text-xs text-[#718496] font-medium">
+            Primary Goal: <span className="text-[#172B3A] font-semibold">{user.targetGoal || 'Improve speech fluency & reduce block frequency'}</span>
           </p>
         </div>
 
@@ -58,18 +58,18 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
 
       {/* 3. Quick Action Cards */}
       <div className="space-y-3">
-        <h2 className="text-xs font-bold text-slate-500 uppercase tracking-wider px-1">Assessment Workspaces</h2>
+        <h2 className="text-xs font-bold text-[#718496] uppercase tracking-wider px-1">Assessment Workspaces</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <button
             onClick={() => onNavigate('studio')}
             className="clinical-card-interactive p-4 text-left space-y-2 flex items-start gap-3"
           >
-            <div className="p-2.5 rounded-lg bg-sky-50 text-sky-800 border border-sky-100 shrink-0">
+            <div className="p-2.5 rounded-lg bg-[#EAF3F9] text-[#1769AA] border border-[#DCE4EA] shrink-0">
               <Mic className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-sm font-bold text-slate-900">Speech Studio</div>
-              <div className="text-xs text-slate-500">Record reading passages for FFT disfluency analysis</div>
+              <div className="text-sm font-bold text-[#172B3A]">Speech Studio</div>
+              <div className="text-xs text-[#718496]">Record reading passages for FFT disfluency analysis</div>
             </div>
           </button>
 
@@ -77,12 +77,12 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
             onClick={() => onNavigate('interview')}
             className="clinical-card-interactive p-4 text-left space-y-2 flex items-start gap-3"
           >
-            <div className="p-2.5 rounded-lg bg-teal-50 text-teal-800 border border-teal-100 shrink-0">
+            <div className="p-2.5 rounded-lg bg-[#E7F5F2] text-[#0F766E] border border-[#DCE4EA] shrink-0">
               <Briefcase className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-sm font-bold text-slate-900">AI Interview</div>
-              <div className="text-xs text-slate-500">Practice behavioral and clinical Q&A scenarios</div>
+              <div className="text-sm font-bold text-[#172B3A]">AI Interview</div>
+              <div className="text-xs text-[#718496]">Practice behavioral and clinical Q&A scenarios</div>
             </div>
           </button>
 
@@ -90,12 +90,12 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
             onClick={() => onNavigate('conversation')}
             className="clinical-card-interactive p-4 text-left space-y-2 flex items-start gap-3"
           >
-            <div className="p-2.5 rounded-lg bg-slate-100 text-slate-700 border border-slate-200 shrink-0">
+            <div className="p-2.5 rounded-lg bg-[#F8FAFC] text-[#123B5D] border border-[#DCE4EA] shrink-0">
               <MessageSquare className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-sm font-bold text-slate-900">AI Dialogue</div>
-              <div className="text-xs text-slate-500">Natural conversation practice with real-time feedback</div>
+              <div className="text-sm font-bold text-[#172B3A]">AI Dialogue</div>
+              <div className="text-xs text-[#718496]">Natural conversation practice with real-time feedback</div>
             </div>
           </button>
         </div>
@@ -106,14 +106,14 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
         
         {/* Left Column: Latest Speech Assessment Summary */}
         <div className="lg:col-span-2 clinical-card p-6 space-y-5">
-          <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+          <div className="flex items-center justify-between border-b border-[#DCE4EA] pb-4">
             <div>
-              <h3 className="text-base font-bold text-slate-900">Latest Speech Assessment</h3>
-              <p className="text-xs text-slate-500">Detailed breakdown of speech fluency and pace</p>
+              <h3 className="text-base font-bold text-[#172B3A]">Latest Speech Assessment</h3>
+              <p className="text-xs text-[#718496]">Detailed breakdown of speech fluency and pace</p>
             </div>
             <button
               onClick={() => onNavigate('history')}
-              className="text-xs font-semibold text-sky-800 hover:text-sky-900 flex items-center gap-1 transition-colors"
+              className="text-xs font-semibold text-[#1769AA] hover:text-[#0E4F7A] flex items-center gap-1 transition-colors"
             >
               View History <ChevronRight className="w-4 h-4" />
             </button>
@@ -121,50 +121,50 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
 
           {latestSession ? (
             <div className="space-y-4">
-              <div className="flex items-center justify-between text-xs text-slate-600">
-                <span className="font-semibold text-slate-800">{latestSession.title}</span>
+              <div className="flex items-center justify-between text-xs text-[#52687A]">
+                <span className="font-semibold text-[#172B3A]">{latestSession.title}</span>
                 <span>{latestSession.date}</span>
               </div>
 
               {/* Fluency & Pace Summary Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
-                  <div className="text-xs font-semibold text-slate-500">Fluency Score</div>
-                  <div className="text-2xl font-bold text-sky-800">{latestSession.fluencyScore}%</div>
+                <div className="p-4 rounded-lg bg-[#F8FAFC] border border-[#DCE4EA] space-y-1">
+                  <div className="text-xs font-semibold text-[#718496]">Fluency Score</div>
+                  <div className="text-2xl font-bold text-[#1769AA]">{latestSession.fluencyScore}%</div>
                 </div>
-                <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
-                  <div className="text-xs font-semibold text-slate-500">Speaking Rate</div>
-                  <div className="text-2xl font-bold text-teal-800">{latestSession.speechRateWpm} WPM</div>
+                <div className="p-4 rounded-lg bg-[#F8FAFC] border border-[#DCE4EA] space-y-1">
+                  <div className="text-xs font-semibold text-[#718496]">Speaking Rate</div>
+                  <div className="text-2xl font-bold text-[#0F766E]">{latestSession.speechRateWpm} WPM</div>
                 </div>
-                <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
-                  <div className="text-xs font-semibold text-slate-500">Disfluencies</div>
-                  <div className="text-2xl font-bold text-slate-800">{latestSession.disfluencies.length} Events</div>
+                <div className="p-4 rounded-lg bg-[#F8FAFC] border border-[#DCE4EA] space-y-1">
+                  <div className="text-xs font-semibold text-[#718496]">Disfluencies</div>
+                  <div className="text-2xl font-bold text-[#172B3A]">{latestSession.disfluencies.length} Events</div>
                 </div>
               </div>
 
               {/* Verbatim Transcript */}
-              <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-1">
-                <div className="font-bold text-slate-500 uppercase tracking-wider text-[10px]">Verbatim Transcript</div>
+              <div className="p-4 rounded-lg bg-[#F8FAFC] border border-[#DCE4EA] text-xs text-[#172B3A] space-y-1">
+                <div className="font-bold text-[#718496] uppercase tracking-wider text-[10px]">Verbatim Transcript</div>
                 <p className="italic leading-relaxed">"{latestSession.transcript}"</p>
               </div>
 
               {/* AI Assessment Remark */}
-              <div className="p-4 rounded-lg bg-sky-50 border border-sky-100 text-xs text-sky-900 space-y-1">
-                <div className="font-bold uppercase tracking-wider text-[10px] text-sky-800">Speech Assessment Observations</div>
+              <div className="p-4 rounded-lg bg-[#EAF3F9] border border-[#DCE4EA] text-xs text-[#172B3A] space-y-1">
+                <div className="font-bold uppercase tracking-wider text-[10px] text-[#1769AA]">Speech Assessment Observations</div>
                 <p className="leading-relaxed">{latestSession.aiFeedbackSummary}</p>
               </div>
             </div>
           ) : (
-            <div className="text-center py-12 text-slate-500 text-sm">No speech sessions recorded yet.</div>
+            <div className="text-center py-12 text-[#718496] text-sm">No speech sessions recorded yet.</div>
           )}
         </div>
 
         {/* Right Column: Today's Practice Tasks */}
         <div className="clinical-card p-6 space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+          <div className="flex items-center justify-between border-b border-[#DCE4EA] pb-4">
             <div className="flex items-center gap-2">
-              <Target className="w-4 h-4 text-sky-800" />
-              <h3 className="text-base font-bold text-slate-900">Today's Practice</h3>
+              <Target className="w-4 h-4 text-[#1769AA]" />
+              <h3 className="text-base font-bold text-[#172B3A]">Today's Practice</h3>
             </div>
             <Badge variant="sky" size="sm">
               {completedTasksCount} / {tasks.length} Done
@@ -178,23 +178,23 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
                 onClick={() => onToggleTask(task.id)}
                 className={`p-3.5 rounded-lg border transition-all cursor-pointer flex items-start gap-3 ${
                   task.completed
-                    ? 'bg-slate-50 border-slate-200 opacity-70'
-                    : 'bg-white border-slate-200 hover:border-slate-300 shadow-2xs'
+                    ? 'bg-[#F8FAFC] border-[#DCE4EA] opacity-70'
+                    : 'bg-white border-[#DCE4EA] hover:border-[#1769AA]/40 shadow-2xs'
                 }`}
               >
                 <div className={`mt-0.5 w-4 h-4 rounded flex items-center justify-center border transition-colors shrink-0 ${
                   task.completed
-                    ? 'bg-emerald-600 border-emerald-600 text-white'
-                    : 'border-slate-300 bg-white'
+                    ? 'bg-[#167A5B] border-[#167A5B] text-white'
+                    : 'border-[#DCE4EA] bg-white'
                 }`}>
                   {task.completed && <CheckCircle2 className="w-3.5 h-3.5" />}
                 </div>
                 <div className="space-y-0.5">
-                  <div className={`text-xs font-semibold ${task.completed ? 'line-through text-slate-500' : 'text-slate-800'}`}>
+                  <div className={`text-xs font-semibold ${task.completed ? 'line-through text-[#718496]' : 'text-[#172B3A]'}`}>
                     {task.title}
                   </div>
-                  <div className="text-[11px] text-slate-500 leading-normal">{task.description}</div>
-                  <div className="text-[10px] text-sky-700 font-medium">Duration: {task.durationMinutes} mins</div>
+                  <div className="text-[11px] text-[#52687A] leading-normal">{task.description}</div>
+                  <div className="text-[10px] text-[#1769AA] font-medium">Duration: {task.durationMinutes} mins</div>
                 </div>
               </div>
             ))}
@@ -202,7 +202,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
 
           <button
             onClick={() => onNavigate('learning')}
-            className="w-full py-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 text-xs font-semibold text-slate-700 transition-colors flex items-center justify-center gap-1.5 border border-slate-200"
+            className="w-full py-2.5 rounded-lg bg-[#F8FAFC] hover:bg-[#EAF3F9] text-xs font-semibold text-[#172B3A] transition-colors flex items-center justify-center gap-1.5 border border-[#DCE4EA]"
           >
             View Full Learning Plan <ChevronRight className="w-4 h-4" />
           </button>
@@ -213,4 +213,5 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
     </div>
   );
 };
+
 

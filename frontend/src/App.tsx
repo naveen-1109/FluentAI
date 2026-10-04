@@ -71,7 +71,7 @@ export function AppContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F5F8FA] text-slate-900 font-sans selection:bg-sky-100 selection:text-sky-900">
+    <div className="min-h-screen flex flex-col bg-[#F5F7F9] text-[#172B3A] font-sans selection:bg-[#EAF3F9] selection:text-[#1769AA]">
       
       {/* Top Navbar */}
       <Navbar

@@ -1,80 +1,63 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    /* Precise Clinical Healthcare Color Palette */
-    --color-primary-navy: #123B5D;
-    --color-primary-blue: #1769AA;
-    --color-deep-blue: #0E4F7A;
-    --color-teal: #0F766E;
-    --color-page-bg: #F5F7F9;
-    --color-surface: #FFFFFF;
-    --color-secondary-surface: #F8FAFC;
-    --color-text-primary: #172B3A;
-    --color-text-secondary: #52687A;
-    --color-text-muted: #718496;
-    --color-border: #DCE4EA;
-    --color-light-blue: #EAF3F9;
-    --color-light-teal: #E7F5F2;
-    --color-success: #167A5B;
-    --color-success-bg: #EAF6F1;
-    --color-warning: #A66A16;
-    --color-warning-bg: #FFF7E6;
-    --color-error: #C24141;
-    --color-error-bg: #FDEEEE;
-  }
-
-  body {
-    background-color: var(--color-page-bg);
-    color: var(--color-text-primary);
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+@theme {
+  --color-page-bg: #F5F7F9;
+  --color-surface: #FFFFFF;
+  --color-secondary-surface: #F8FAFC;
+  --color-primary-navy: #123B5D;
+  --color-primary-blue: #1769AA;
+  --color-deep-blue: #0E4F7A;
+  --color-teal-clinical: #0F766E;
+  --color-text-primary: #172B3A;
+  --color-text-secondary: #52687A;
+  --color-text-muted: #718496;
+  --color-border-clinical: #DCE4EA;
+  --color-light-blue: #EAF3F9;
+  --color-light-teal: #E7F5F2;
+  --color-success-clinical: #167A5B;
+  --color-success-bg: #EAF6F1;
+  --color-warning-clinical: #A66A16;
+  --color-warning-bg: #FFF7E6;
+  --color-error-clinical: #C24141;
+  --color-error-bg: #FDEEEE;
 }
 
-/* Clinical Card & Surface Utility Classes */
-.glass-panel,
-.clinical-card {
-  background-color: #FFFFFF;
-  border: 1px solid #DCE4EA;
-  border-radius: 0.75rem; /* 12px */
-  box-shadow: 0 1px 3px 0 rgba(23, 43, 58, 0.04), 0 1px 2px -1px rgba(23, 43, 58, 0.03);
+/* Global Body & Root Base Reset */
+html, body, #root {
+  background-color: #F5F7F9 !important;
+  color: #172B3A !important;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
 }
 
-.glass-panel-interactive,
-.clinical-card-interactive {
-  background-color: #FFFFFF;
-  border: 1px solid #DCE4EA;
-  border-radius: 0.75rem;
-  box-shadow: 0 1px 3px 0 rgba(23, 43, 58, 0.04);
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+/* Clinical Card Base Overrides */
+.clinical-card,
+.glass-panel {
+  background-color: #FFFFFF !important;
+  border: 1px solid #DCE4EA !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 1px 3px 0 rgba(23, 43, 58, 0.05) !important;
+  color: #172B3A !important;
 }
 
-.glass-panel-interactive:hover,
-.clinical-card-interactive:hover {
-  border-color: #1769AA;
-  box-shadow: 0 4px 12px -2px rgba(23, 43, 58, 0.08), 0 2px 4px -2px rgba(23, 43, 58, 0.04);
+.clinical-card-interactive,
+.glass-panel-interactive {
+  background-color: #FFFFFF !important;
+  border: 1px solid #DCE4EA !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 1px 3px 0 rgba(23, 43, 58, 0.05) !important;
+  color: #172B3A !important;
+  transition: all 0.15s ease-in-out;
+}
+
+.clinical-card-interactive:hover,
+.glass-panel-interactive:hover {
+  border-color: #1769AA !important;
+  box-shadow: 0 4px 12px -2px rgba(23, 43, 58, 0.08) !important;
   transform: translateY(-1px);
 }
 
-/* Utility Color Helpers */
-.bg-clinical-page { background-color: #F5F7F9; }
-.bg-clinical-surface { background-color: #FFFFFF; }
-.bg-clinical-secondary { background-color: #F8FAFC; }
-.bg-clinical-light-blue { background-color: #EAF3F9; }
-.bg-clinical-light-teal { background-color: #E7F5F2; }
-
-.text-clinical-navy { color: #123B5D; }
-.text-clinical-blue { color: #1769AA; }
-.text-clinical-teal { color: #0F766E; }
-.text-clinical-primary { color: #172B3A; }
-.text-clinical-secondary { color: #52687A; }
-.text-clinical-muted { color: #718496; }
-
-.border-clinical { border-color: #DCE4EA; }
-
-/* Custom Minimalist Clean Scrollbar */
+/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -89,6 +72,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #718496;
 }
+
 
 
 
